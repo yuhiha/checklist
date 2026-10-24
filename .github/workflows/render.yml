@@ -1,0 +1,35 @@
+name: 체크리스트 PDF 변환
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: render
+  cancel-in-progress: false
+env:
+  ENDPOINT: https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTrVnMkM7FDNe5FFZAQtfT42nxw5nHTpiJfuLxoQ9S6SDell/exec
+  RENDER_KEY: ${{ secrets.RENDER_KEY }}
+  CHROME_PATH: /usr/bin/google-chrome
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 대기 건수 확인
+        id: check
+        working-directory: render
+        run: node render.mjs --check
+      - name: 변환 도구 설치
+        if: steps.check.outputs.count != '0'
+        working-directory: render
+        run: npm install --no-save --no-audit --no-fund puppeteer-core@23.11.1
+      - name: PDF 만들어 보내기
+        if: steps.check.outputs.count != '0'
+        working-directory: render
+        run: node render.mjs
