@@ -330,7 +330,11 @@ const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTr
       ua: navigator.userAgent.slice(0, 160)
     };
     try {
-      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+      // 답을 기다리지 않고 보낸다 (구글 응답이 2~3초 걸림) — 창을 닫아도 브라우저가 끝까지 전송
+      const body = JSON.stringify(payload);
+      let queued = false;
+      try { queued = !!(navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, new Blob([body], { type: 'text/plain;charset=utf-8' }))); } catch (e3) {}
+      if (!queued) await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body });
       document.getElementById('done').hidden = false;
       try { localStorage.removeItem(KEY); } catch (e2) {}
       say('보냈어요.');
