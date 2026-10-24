@@ -85,6 +85,14 @@ body { margin: 0; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 0 max
 .viewport { overflow-x: auto; -webkit-overflow-scrolling: touch }
 .sheet { width: 210mm; margin: 0 auto; background: #fff; padding: 9mm 11mm 10mm; box-shadow: 0 1px 6px rgba(31,46,54,.12) }
 .sheet section.newpage { break-before: auto }
+/* 폰 글꼴이 넓거나 '큰 글씨' 설정이면 칸을 넘쳐 옆 글자와 겹친다 → 자기 칸 안에서 줄바꿈 */
+.sheet .cell, .sheet .mq, .sheet .ck, .sheet .info span { white-space: normal; flex-wrap: wrap; min-width: 0 }
+.sheet .cell { row-gap: 2px }
+.sheet .note, .sheet .tx, .sheet .pre, .sheet .in, .sheet .mc .ck, .sheet .fl .ck { white-space: normal; min-width: 0 }
+.sheet .fl > *, .sheet .mc > * { min-width: 0 }
+.sheet .grid > * { min-width: 0; overflow-wrap: anywhere }
+.sheet .ck { flex-wrap: nowrap }                 /* 네모 칸은 이름 옆에 붙어 있게 */
+.sheet .grid, .sheet .info { word-break: keep-all } /* 한글은 띄어쓰기에서만 줄바꿈 */
 
 .ck { cursor: pointer; -webkit-tap-highlight-color: transparent; border-radius: 2px }
 .ck.on i { background: var(--on); border-color: var(--on); position: relative }
