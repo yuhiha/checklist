@@ -124,8 +124,17 @@ input.b:focus { background: var(--band); border-bottom-color: var(--teal) }
 .done p { margin: 0 }
 .done a { display: block; background: var(--teal); color: #fff; text-decoration: none; font-weight: 700; border-radius: 6px; padding: 13px; font-size: 17px }
 .done button { font: inherit; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer }
-/* PDF용 복제본: 화면 밖에서 원래 크기로 그린다 */
-.print-clone { position: absolute; left: -10000px; top: 0; zoom: 1 !important }
+/* #render = PDF 변환 모드: GitHub 작업이 열어 A4로 인쇄 (원본 상담지 PDF와 같은 Pretendard·여백·쪽 나눔) */
+@font-face { font-family: "PretendardPrint"; src: url(fonts/Pretendard-Regular.woff2) format("woff2"); font-weight: 400 }
+@font-face { font-family: "PretendardPrint"; src: url(fonts/Pretendard-Bold.woff2) format("woff2"); font-weight: 700 }
+@page { size: A4 portrait; margin: 9mm 11mm 8mm }
+html.render, html.render body { background: #fff }
+html.render body { padding: 0; font-family: "PretendardPrint", "Noto Sans KR", sans-serif }
+html.render .top, html.render .bar, html.render .done { display: none !important }
+html.render .viewport { overflow: visible }
+html.render .sheet { width: auto; margin: 0; padding: 0; box-shadow: none }
+html.render .sheet section.newpage { break-before: page }
+html.render .sheet .cell, html.render .sheet .mq, html.render .sheet .ck, html.render .sheet .info span { white-space: nowrap; flex-wrap: nowrap }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important } }
 </style>
 </head>
@@ -157,8 +166,6 @@ input.b:focus { background: var(--band); border-bottom-color: var(--teal) }
     <button type="button" id="again">체크리스트 다시 보기</button>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTrVnMkM7FDNe5FFZAQtfT42nxw5nHTpiJfuLxoQ9S6SDell/exec";
 (function () {
@@ -170,9 +177,12 @@ const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTr
   const insta = document.getElementById('insta');
   const agree = document.getElementById('agree');
   const KEY = 'yuhiha-checklist-site-v1';
+  // #render = PDF 변환용(GitHub 작업이 열어서 체크 상태를 넣고 A4로 인쇄)
+  const RENDER = location.hash === '#render';
+  if (RENDER) document.documentElement.classList.add('render');
   let big = false;
 
-  // 빈칸(.b)을 같은 크기의 입력칸으로 바꾼다
+  // 빈칸(.b)을 같은 크기의 입력칸으로 바꾼다 — id 는 순서대로 f0, f1 … (변환 때도 같은 순서)
   let k = 0;
   sheet.querySelectorAll('.b').forEach(el => {
     const inp = document.createElement('input');
@@ -261,84 +271,41 @@ const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTr
     return { text: lines.join('\n'), count };
   }
 
+  // 체크 상태: 켜진 칸 id 목록 + 빈칸 값 — 이것만 보내고, PDF 는 나중에 이걸로 다시 그린다
+  function getState() {
+    const f = {};
+    sheet.querySelectorAll('input').forEach(x => { if (x.value) f[x.id] = x.value; });
+    return { c: cks.filter(c => c.classList.contains('on')).map(c => c.id), f };
+  }
+  function apply(st) {
+    cks.forEach(c => setCk(c, false));
+    sheet.querySelectorAll('input').forEach(x => { x.value = ''; x.setAttribute('value', ''); });
+    (st.c || []).forEach(id => { const c = document.getElementById(id); if (c) setCk(c, true); });
+    Object.entries(st.f || {}).forEach(([id, v]) => { const x = document.getElementById(id); if (x) { x.value = v; x.setAttribute('value', v); } });
+  }
+
   function update() { document.getElementById('n').textContent = summary().count; save(); }
 
   function save() {
-    const d = { c: cks.filter(c => c.classList.contains('on')).map(c => c.id), f: {}, insta: insta.value };
-    sheet.querySelectorAll('input').forEach(x => { if (x.value) d.f[x.id] = x.value; });
+    if (RENDER) return;
+    const d = Object.assign(getState(), { insta: insta.value });
     try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
   }
   function load() {
     let d = null; try { d = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
     if (!d) return;
-    (d.c || []).forEach(id => { const c = document.getElementById(id); if (c) setCk(c, true); });
-    Object.entries(d.f || {}).forEach(([id, v]) => { const x = document.getElementById(id); if (x) x.value = v; });
+    apply(d);
     if (d.insta) insta.value = d.insta;
   }
 
   function fit() {
+    if (RENDER) { sheet.style.zoom = ''; return; }
     sheet.style.zoom = 1;
     const w = sheet.getBoundingClientRect().width;
     sheet.style.zoom = big ? 1.15 : Math.min(1, vp.clientWidth / w);
   }
   zoomBtn.addEventListener('click', () => { big = !big; zoomBtn.textContent = big ? '맞춤' : '크게'; zoomBtn.setAttribute('aria-pressed', String(big)); fit(); });
   window.addEventListener('resize', fit);
-
-  // 체크된 양식을 A4 PDF로 만든다 (표·섹션 경계에서 쪽을 나눔)
-  let lastPages = [];
-  async function makePdf() {
-    lastPages = [];
-    const clone = sheet.cloneNode(true);
-    clone.removeAttribute('id'); clone.classList.add('print-clone'); clone.style.zoom = 1;
-    const src = sheet.querySelectorAll('input'); const dst = clone.querySelectorAll('input');
-    // html2canvas 는 입력칸 글자를 잘 못 그려서 같은 자리에 글자로 바꿔 넣는다
-    dst.forEach((x, i) => {
-      const span = document.createElement('span');
-      span.className = x.className; span.setAttribute('style', x.getAttribute('style') || '');
-      span.textContent = src[i].value;
-      span.style.display = getComputedStyle(src[i]).display === 'block' ? 'block' : 'inline-block';
-      span.style.color = '#2e595e'; span.style.fontWeight = '700'; span.style.textAlign = x.closest('.info') ? 'left' : 'center';
-      span.style.fontSize = '8.4pt'; span.style.lineHeight = '1.1'; span.style.height = 'auto'; span.style.minHeight = '9pt';
-      span.style.verticalAlign = 'baseline'; span.style.paddingBottom = '1px'; span.style.whiteSpace = 'nowrap';
-      x.replaceWith(span);
-    });
-    document.body.appendChild(clone);
-    try {
-      if (document.fonts && document.fonts.ready) await document.fonts.ready;
-      const W = clone.offsetWidth;                 // 210mm
-      const PAGE = Math.round(W * 297 / 210);      // A4 높이(px)
-      const TOP = Math.round(W * 9 / 210), BOTTOM = Math.round(W * 10 / 210);
-      const base = clone.getBoundingClientRect().top;
-      const cuts = [...clone.querySelectorAll('section, tbody tr:not(:first-child)')].map(el => Math.round(el.getBoundingClientRect().top - base)).sort((a, b) => a - b);
-      const total = clone.scrollHeight;
-      const scale = Math.min(2, 2400 / W);
-      const canvas = await html2canvas(clone, { scale, backgroundColor: '#ffffff', useCORS: true, logging: false, windowWidth: W });
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({ unit: 'px', format: [W, PAGE], orientation: 'portrait', compress: true, hotfixes: ['px_scaling'] });
-      let start = 0, first = true;
-      while (start < total - 4) {
-        const room = PAGE - (first ? 0 : TOP) - BOTTOM;
-        let end = start + room;
-        if (end < total) {
-          const fit2 = cuts.filter(c => c > start + 80 && c <= end);
-          if (fit2.length) end = fit2[fit2.length - 1];
-        } else end = total;
-        const h = end - start;
-        const page = document.createElement('canvas');
-        page.width = Math.round(W * scale); page.height = Math.round(PAGE * scale);
-        const g = page.getContext('2d');
-        g.fillStyle = '#fff'; g.fillRect(0, 0, page.width, page.height);
-        const y0 = first ? 0 : TOP;
-        g.drawImage(canvas, 0, Math.round(start * scale), canvas.width, Math.round(h * scale), 0, Math.round(y0 * scale), page.width, Math.round(h * scale));
-        if (!first) pdf.addPage([W, PAGE], 'portrait');
-        const jpg = page.toDataURL('image/jpeg', 0.86);
-        lastPages.push(jpg);
-        pdf.addImage(jpg, 'JPEG', 0, 0, W, PAGE);
-        start = end; first = false;
-      }
-      return pdf.output('datauristring').split(',')[1];
-    } finally { clone.remove(); }
-  }
 
   function stamp() {
     const d = new Date(); const p = n => String(n).padStart(2, '0');
@@ -354,13 +321,11 @@ const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTr
     if (!s.count && !Object.keys(info()).length) { say('체크한 항목이 없어요. 하는 공사를 눌러 체크해 주세요.', true); return; }
     if (!agree.checked) { say('보내기 전에 위 동의 칸을 눌러 주세요.', true); return; }
     if (!ENDPOINT) { say('아직 접수 준비 중이에요. 잠시 후 다시 해 주세요.', true); return; }
-    sendBtn.disabled = true; sendBtn.textContent = '보내는 중…'; say('체크한 양식을 정리하고 있어요. 10초쯤 걸려요.');
-    let pdf = '';
-    try { pdf = await makePdf(); } catch (err) { pdf = ''; }
+    sendBtn.disabled = true; sendBtn.textContent = '보내는 중…'; say('보내고 있어요.');
     const inf = info();
     const payload = {
-      v: 1, insta: id, company: document.getElementById('company').value,
-      info: inf, count: s.count, summary: s.text, pdf,
+      v: 2, insta: id, company: document.getElementById('company').value,
+      info: inf, count: s.count, summary: s.text, state: getState(),
       filename: stamp() + '_' + id.replace(/[^\w.가-힣-]/g, '') + (inf['평형'] ? '_' + inf['평형'] : '') + '.pdf',
       ua: navigator.userAgent.slice(0, 160)
     };
@@ -377,9 +342,10 @@ const ENDPOINT = "https://script.google.com/macros/s/AKfycbzyqj8HlzR2tmfTUWHkwTr
   });
   document.getElementById('again').addEventListener('click', () => { document.getElementById('done').hidden = true; });
 
-  load(); fit(); update();
+  if (!RENDER) load();
+  fit(); update();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-  window.__yuhiha = { makePdf, summary, pages: () => lastPages };
+  window.__yuhiha = { summary, getState, apply, ready: true };
 })();
 
 </script>
