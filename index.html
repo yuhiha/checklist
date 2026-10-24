@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>공간유희하 견적 체크리스트</title>
+<meta name="description" content="공간 유희하 무료 견적 체크리스트 — 체크하고 보내 주시면 견적을 써 드려요.">
+<meta property="og:title" content="공간유희하 견적 체크리스트">
+<meta property="og:description" content="하는 것만 체크하고 [유희하에 보내기]를 눌러 주세요.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap">
+<style>
+
+:root { --ink: #1f2e36; --muted: #6e7d82; --teal: #2e595e; --band: #f2f7f5; --line: #c9d4d4; --mark: #8f9da1; --lw: 0.75pt }
+* { box-sizing: border-box }
+html, body { margin: 0; background: #fff }
+body { font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif; color: var(--ink); font-size: 8.80pt; line-height: 1.3 }
+.page { width: 100% }
+header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3mm }
+.brand { border-left: 2.25pt solid var(--teal); padding-left: 8px }
+.brand b { display: block; color: var(--teal); font-size: 8.36pt; letter-spacing: .04em; line-height: 1 }
+.brand h1 { margin: 2px 0 0; font-size: 17.60pt; letter-spacing: -.02em; line-height: 1.05 }
+header .r { text-align: right; color: var(--muted); font-size: 7.70pt; line-height: 1.5 }
+header .r b { color: var(--teal); letter-spacing: .04em }
+.info { display: grid; grid-template-columns: 2.2fr 1fr 1.2fr 1.6fr 1.2fr; border-top: var(--lw) solid var(--line); border-bottom: var(--lw) solid var(--line); margin-bottom: 6mm }
+.info span { display: flex; align-items: center; gap: 6px; padding: 6px 4px; color: var(--muted); white-space: nowrap }
+.info span:nth-child(-n+5) { border-bottom: var(--lw) solid var(--line) }
+.info .b { flex: 1 }
+.info u { text-decoration: none; color: var(--ink) }
+section { margin-bottom: 3mm; break-inside: avoid }   /* 표 하나는 한 쪽에 (사용자: 욕실 잘리는 것 별로) */
+h2 { break-after: avoid }
+section.newpage { break-before: page }
+tr { break-inside: avoid }
+thead { display: table-header-group }
+h2 { display: flex; align-items: baseline; gap: 8px; margin: 0 0 2mm; font-size: 13.20pt }
+h2 b { color: var(--teal); font-size: 12.10pt }
+table { width: 100%; table-layout: fixed; border-collapse: collapse; border-top: 1.5pt solid var(--teal); border-bottom: var(--lw) solid var(--line) }
+col.c1 { width: 35mm }
+thead th { background: var(--band); color: var(--teal); font-size: 7.70pt; font-weight: 700; text-align: left; padding: 3px 8px }
+tbody tr + tr { border-top: var(--lw) solid var(--line) }
+tbody th { text-align: left; vertical-align: top; font-weight: 700; padding: 2.5px 8px; font-size: 8.58pt }
+td { vertical-align: top; padding: 2px 8px }
+td.c { line-height: 1.42 }
+tbody th small { display: block; font-weight: 400; color: var(--muted); font-size: 7.26pt }
+td.w { color: var(--muted); font-size: 8.14pt; padding-top: 6px; line-height: 1.85 }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 10px; row-gap: 0 }
+.cell { display: flex; align-items: center; flex-wrap: nowrap; white-space: nowrap; min-width: 0 }
+.ck { display: inline-flex; align-items: center; gap: 4px; margin-right: 8px; white-space: nowrap }
+.ck i { width: 7.5pt; height: 7.5pt; border: var(--lw) solid var(--mark); flex: none }
+.ck small { color: var(--muted); font-size: 7.70pt }
+.pre { color: var(--muted); font-size: 7.70pt; margin-right: 6px }
+.br { grid-column: 1 / -1; height: 0 }
+.auto { color: var(--muted) }
+.note { color: var(--muted); font-size: 7.48pt; margin: 0 6px 0 -3px; white-space: nowrap }
+.tx { color: var(--muted); margin-right: 8px; white-space: nowrap }
+.b.w { width: 32mm }
+.in { color: var(--muted); font-size: 7.70pt; margin-left: 6px }
+.mc { display: grid; grid-template-columns: 37mm 1fr auto; align-items: center; column-gap: 6px; width: 100%; padding-right: 10px }
+.mc .ck { white-space: nowrap; margin: 0 }
+.mc.wide { grid-template-columns: auto 1fr auto }
+.mc .mline { width: auto; display: block; margin: 0 }
+.fl { display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: 4px; width: 100%; padding-right: 10px }
+.fl .ck, .fl .tx { margin: 0 }
+.fl .b { width: auto; display: block; margin: 0 }
+.fl .u { min-width: 3mm; color: var(--ink) }
+.mq { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap }
+.b { display: inline-block; width: 8.5mm; border-bottom: var(--lw) solid var(--mark); height: 8pt; vertical-align: -2pt; margin: 0 2px }
+
+/* 레이아웃: 위 안내·인스타 아이디 → A4 한 장(화면 폭에 맞춰 축소) → 아래 고정 막대에서 보내기 */
+:root { --desk: #e9eeec; --on: #2e595e; --warn: #9a3b2e }
+html, body { background: var(--desk) }
+body { margin: 0; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; -webkit-text-size-adjust: 100% }
+.top { max-width: 794px; margin: 0 auto 12px; font-size: 15px; line-height: 1.6; color: var(--ink); display: flex; flex-direction: column; gap: 10px }
+.top h1 { font-size: 20px; margin: 0; letter-spacing: -.01em }
+.top h1 small { display: block; font-size: 12px; color: var(--teal); letter-spacing: .08em; font-weight: 700 }
+.top p { margin: 0 }
+.top b { color: var(--teal) }
+.who { display: flex; flex-direction: column; gap: 4px }
+.who label { font-weight: 700; font-size: 15px }
+.who label em { font-style: normal; color: var(--warn); font-size: 13px; margin-left: 4px }
+.who input { font: inherit; font-size: 17px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink) }
+.who input:focus { outline: 2px solid var(--teal); outline-offset: 1px }
+.viewport { overflow-x: auto; -webkit-overflow-scrolling: touch }
+.sheet { width: 210mm; margin: 0 auto; background: #fff; padding: 9mm 11mm 10mm; box-shadow: 0 1px 6px rgba(31,46,54,.12) }
+.sheet section.newpage { break-before: auto }
+
+.ck { cursor: pointer; -webkit-tap-highlight-color: transparent; border-radius: 2px }
+.ck.on i { background: var(--on); border-color: var(--on); position: relative }
+.ck.on i::after { content: ""; position: absolute; left: 30%; top: 8%; width: 30%; height: 58%; border: solid #fff; border-width: 0 1.4pt 1.4pt 0; transform: rotate(45deg) }
+.ck.on { color: var(--on); font-weight: 700 }
+.ck:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px }
+input.b { font: inherit; font-size: 8.4pt; color: var(--on); font-weight: 700; text-align: center; background: transparent; border: 0; border-bottom: var(--lw) solid var(--mark); border-radius: 0; padding: 0; height: 10pt; line-height: 10pt; vertical-align: -2pt; outline: none; -webkit-appearance: none; appearance: none; min-width: 0 }
+input.b:focus { background: var(--band); border-bottom-color: var(--teal) }
+.info input.b { flex: 1; text-align: left; height: 11pt }
+
+.bar { position: sticky; bottom: 0; z-index: 5; max-width: 794px; margin: 12px auto 0; background: #fff; border-top: 1px solid var(--line); padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 8px; box-shadow: 0 -4px 14px rgba(31,46,54,.08); font-size: 14px; color: var(--ink) }
+.agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--muted); line-height: 1.45; cursor: pointer }
+.agree input { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--teal) }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 8px }
+.bar button { font: inherit; font-size: 17px; font-weight: 700; border-radius: 6px; padding: 13px 10px; cursor: pointer; border: 1px solid var(--teal) }
+.bar .send { background: var(--teal); color: #fff }
+.bar .send[disabled] { opacity: .6; cursor: wait }
+.bar .zoom { background: transparent; color: var(--muted); border-color: var(--line); font-size: 15px; padding-inline: 14px }
+.msg { margin: 0; font-size: 14px; color: var(--muted); min-height: 1.4em }
+.msg.err { color: var(--warn) }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden }
+
+.done { position: fixed; inset: 0; z-index: 20; background: rgba(233,238,236,.97); display: flex; align-items: center; justify-content: center; padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)) }
+.done[hidden] { display: none }
+.done .card { background: #fff; border-radius: 10px; max-width: 420px; padding: 26px 22px; text-align: center; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 2px 12px rgba(31,46,54,.12); font-size: 16px; line-height: 1.6; color: var(--ink) }
+.done .mark { width: 54px; height: 54px; border-radius: 50%; background: var(--teal); margin: 0 auto; position: relative }
+.done .mark::after { content: ""; position: absolute; left: 20px; top: 12px; width: 12px; height: 24px; border: solid #fff; border-width: 0 4px 4px 0; transform: rotate(45deg) }
+.done h2 { margin: 0; font-size: 21px }
+.done p { margin: 0 }
+.done a { display: block; background: var(--teal); color: #fff; text-decoration: none; font-weight: 700; border-radius: 6px; padding: 13px; font-size: 17px }
+.done button { font: inherit; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer }
+/* PDF용 복제본: 화면 밖에서 원래 크기로 그린다 */
+.print-clone { position: absolute; left: -10000px; top: 0; zoom: 1 !important }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1><small>YUHIHA · 공간 유희하</small>무료 견적 체크리스트</h1>
+  <p>하는 것만 <b>눌러서 체크</b>하고, 빈칸에 숫자를 적어 주세요. 다 하셨으면 맨 아래 <b>[유희하에 보내기]</b>를 눌러 주세요. 글씨가 작으면 <b>[크게]</b>를 눌러 주세요.</p>
+  <div class="who">
+    <label for="insta">인스타그램 아이디<em>필수</em></label>
+    <input id="insta" type="text" inputmode="email" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="예) yuhiha_designers">
+  </div>
+</div>
+<div class="viewport"><div class="sheet" id="sheet"><div class="page"><header><div class="brand"><b>YUHIHA</b><h1>인테리어 상담 체크리스트</h1></div><div class="r"><b>CONSULTATION</b><br>세로 · 01 철거 ~ 13 기타마감</div></header><div class="info"><span>현장명<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i></span><span>평형<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i><u>평</u></span><span>예산<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i><u>만원</u></span><span>공사 일정<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i></span><span>입주일<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i></span><span>상담자<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i></span><span style="grid-column: span 2">연락처<i class="b" style="border-bottom:0.75pt solid #8f9da1;height:9pt"></i></span><span style="grid-column: span 2; color:#8a9599; font-size:6.8pt">□ 하는 것만 체크 · 수량은 빈칸에 · 사진·도면 함께</span></div><section><h2><b>01</b>철거</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>마감재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>몰딩/걸레받이</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>우물천장·등박스</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>천장댄조 <span class="b"></span> 평</span><span class="note">거실·주방·현관·각방</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>목공 가벽</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>목공 아트월</span><span class="b"></span><span class="u">m</span></span></span></div></td></tr><tr><th>가구<small>도면에 이름·폭 표시</small></th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>싱크대 상·하부장 <span class="b"></span> m</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>엔지니어스톤·세라믹 상판 <span class="b"></span> m</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>키큰장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>시스템장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>가구 도어만 철거 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>서랍장</span><span class="b"></span><span class="u">자</span></span></span></div></td></tr><tr><th>문 · 문틀</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>기본 문문틀</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>공틀문·창고문</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>중문</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>방화문</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>문턱 제거 후 미장 <span class="b"></span> 개</span></span></div></td></tr><tr><th>욕실</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="pre">거실욕실</span><span class="ck"><i></i>전체</span><span class="ck"><i></i>기본 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 2"><span class="pre">안방욕실</span><span class="ck"><i></i>전체</span><span class="ck"><i></i>기본 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>UBR 철거</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>라디에이터 철거 후 미장 <span class="b"></span> 개</span></span></div></td></tr><tr><th>바닥재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>장판</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>강마루</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>강화마루</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>원목마루</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>대리석</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>바닥 샌딩작업 <span class="b"></span> 평</span><span class="note">한지·본드·바닥면 단차 시</span></span></div></td></tr><tr><th>타일·조적·대리석·비내력</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>현관 바닥</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>주방 벽면</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>발코니 바닥</span><span class="b"></span><span class="u">개소</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>조적 가벽</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>아트월 벽면 <span class="b"></span> m</span><span class="note">벽돌·타일·대리석 등</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>화단 철거</span><span class="b"></span><span class="u">m</span></span></span></div></td></tr><tr><th>기타 마감재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>조명·콘센트·스위치 철거</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>벽지 철거</span><span class="b"></span><span class="u">평</span></span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>도시가스 배관</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>기타 배관</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span></div></td></tr><tr><th>샷시<small>도면에 위치 표시</small></th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>분합창 <span class="b"></span> 개</span><span class="note">확장 시 부분철거</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>터닝도어</span><span class="b"></span><span class="u">개</span></span></span></div></td></tr><tr><th>자동</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="note">폐기물·양중은 평형으로 자동 계산</span></span></div></td></tr></tbody></table></section><section><h2><b>02</b>설비</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>확장</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>거실</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>주방</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>방</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>날개벽 철거</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>재확장</span></span><span class="cell" style="grid-column: span 2"><span class="tx">내용 <span class="b"></span></span><span class="note">예) 바닥난방 재시공 · 벽 단열 재시공</span></span></div></td></tr><tr><th>방수</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>거실 욕실</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>안방 욕실</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>세탁실 방수</span></span></div></td></tr><tr><th>난방 분배기</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>분배기 교체</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>분배기 이동</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>우수 배관수리</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>바닥 보일러배관 방통 <span class="b"></span> 평</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>바닥 보일러배관 홈파기 <span class="b"></span> 평</span></span></div></td></tr><tr><th>조적/미장</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="pre">거실욕실</span><span class="ck"><i></i>일반</span><span class="ck"><i></i>롱</span></span><span class="cell" style="grid-column: span 1"><span class="pre">안방욕실</span><span class="ck"><i></i>일반</span><span class="ck"><i></i>롱</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>젠다이 수도배수연장 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>조적 파티션</span><span class="b"></span><span class="u">개</span></span></span></div></td></tr><tr><th>수도 및 배수구</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>매립수전 2구</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>매립수전 3~4구 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>주방 수도 이설</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>욕실 수도 및 배수 이설</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>세탁실 수도 및 배수</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>UBR 설비 (수도 및 배수) <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>전체 수도교체</span></span></div></td></tr><tr><th>기타 설비</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>실외기 위치 변경</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>에어컨·환풍기 타공</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>에어컨 드레인관 매립</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>에어컨 배관 매립</span></span></div></td></tr><tr><th>시스템 에어컨</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>LG 시스템에어컨</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>삼성 시스템에어컨</span></span><span class="cell" style="grid-column: span 1"><span class="tx">설치 <span class="b"></span> 대</span></span><span class="cell" style="grid-column: span 1"><span class="tx">위치 <span class="b"></span></span></span></div></td></tr></tbody></table></section><section><h2><b>03</b>창호</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>교체 범위</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>전체 교체</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>일부 교체</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>안 함</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>확인 후 결정</span></span><span class="cell" style="grid-column: span 3"><span class="tx">어디 <span class="b w"></span></span><span class="note">내창/외창 · 단창/이중창</span></span></div></td></tr><tr><th>브랜드</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>LX 뷰프레임</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>LX 뷰프레임 본사 완성창</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>KCC</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>영림</span></span></div></td></tr><tr><th>기타</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>터닝도어</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>미세먼지방충망·모헤어</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>손잡이</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>부속교체 <span class="in">내용</span> <span class="b"></span></span></span></div></td></tr><tr><th>창호 업체 견적</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>요청함</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>요청중</span></span></div></td></tr></tbody></table></section><section><h2><b>04</b>전기 · 조명</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>전기작업</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>일괄소등</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>콘센트·스위치 교체</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>실링팬</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>스위치 증설 (가벽·옹벽) <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>콘센트 증설 (가벽·옹벽) <span class="b"></span> 개</span></span></div></td></tr><tr><th>다운라이트 및 간접등</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>공용부만</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>전체</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>T3·T5 간접등</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>제작 LED바·SMPS 설치 <span class="b"></span> 개</span></span></div></td></tr><tr><th>일반 조명</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>방 엣지등</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>발코니 직부등</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>현관센서</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>멀티매입등</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>라인조명</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>마그네틱</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>펜던트</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>스텝센서</span><span class="b"></span><span class="u">개</span></span></span></div></td></tr><tr><th>증설 및 배선작업</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>차단기교체</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>화재감지기</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>통신라인 배선</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>인덕션</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>식세기</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>광파</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>기타증설 <span class="in">내용</span> <span class="b"></span></span></span></div></td></tr><tr><th>기타자재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 3"><span class="note">전선 1.5·2.5·4.0Q · 15mm 난연재 · 후렉시블 · 피스 및 복스 등</span></span></div></td></tr><tr><th>인건비</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="tx">기공 <span class="b"></span></span></span><span class="cell" style="grid-column: span 3"><span class="tx">조공 <span class="b"></span></span><span class="note">타공 및 설치 인건비 + 식대 (조명·스위치·콘센트)</span></span><span class="cell" style="grid-column: span 3"><span class="tx">별도 콘센트·스위치 증설 까내기작업 <span class="b w"></span></span><span class="note">가벽·옹벽</span></span></div></td></tr></tbody></table></section><section><h2><b>05</b>목공</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>몰딩</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>천장 몰딩</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>걸레받이</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>무몰딩 몰딩·걸레받이 <span class="in">내용</span> <span class="b"></span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>히든 몰딩·걸레받이 <span class="in">내용</span> <span class="b"></span></span></span></div></td></tr><tr><th>문 · 문틀</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>민자문짝</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>9MM문틀</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>슬라이딩</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>히든도어</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>스탭도어</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>피봇도어</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>타공유리</span></span><span class="cell" style="grid-column: span 1"><span class="tx">수량 <span class="b"></span> 개</span></span></div></td></tr><tr><th>중문</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>없음/유지</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>편개</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>비대칭</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>양방향</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>3연동</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>원슬라이딩</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>중문옵션</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span></div></td></tr><tr><th>기타</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>가벽시공</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>단열</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>에어컨 단내림</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>TV 매립</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>아치 시공</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>우물천장</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>침대헤드</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>천장댄조</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>벽면부 작업 <span class="in">내용</span> <span class="b"></span></span></span></div></td></tr><tr><th>철물류</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>방문손잡이</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>EZ경첩</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>도어스토퍼</span><span class="b"></span><span class="u">개</span></span></span></div></td></tr><tr><th>부자재 · 인건비</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="tx">부자재·장비대·기타철물 <span class="b w"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">기공 <span class="b"></span></span></span><span class="cell" style="grid-column: span 2"><span class="tx">조공 <span class="b"></span></span><span class="note">도어·문틀 시공 인건비 포함</span></span></div></td></tr></tbody></table></section><section><h2><b>06</b>타일</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>욕실</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>300×600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>800각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>600×1200각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>졸리컷 시공</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>포인트 타일</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">수량 <span class="b"></span> 박스</span></span></div></td></tr><tr><th>주방 벽</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>300×600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>800각</span></span><span class="cell" style="grid-column: span 1"><span class="tx">수량 <span class="b"></span> 박스</span></span></div></td></tr><tr><th>현관</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>300×600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>800각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>디딤석 작업</span></span><span class="cell" style="grid-column: span 1"><span class="tx">수량 <span class="b"></span> 박스</span></span></div></td></tr><tr><th>발코니</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>300각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>600각</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>기타타일</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">수량 <span class="b"></span> 박스</span></span></div></td></tr><tr><th>마감재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>아덱스 메지</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>아덱스 칼라실리콘 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>문지방 대리석</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>줄눈 폴리우레아 <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>줄눈 마페이 케라폭시 <span class="b"></span> 개</span></span></div></td></tr><tr><th>부자재 · 인건비</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="tx">부자재 <span class="b w"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">기공 <span class="b"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">조공 <span class="b"></span></span></span></div></td></tr></tbody></table></section><section><h2><b>07</b>욕실</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>거실 욕실</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>부분교체</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>욕조</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>유리파티션</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>샤워부스</span></span></div></td></tr><tr><th>안방 욕실</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>부분교체</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>욕조</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>유리파티션</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>샤워부스</span></span></div></td></tr><tr><th>도기 및 가구<small>모델명 기입</small></th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>양변기</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>세면대</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>상부장</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>하부장</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>거울</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span></div></td></tr><tr><th>수전 및 액세서리<small>모델명 기입</small></th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>세면수전</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>샤워수전</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 4"><span class="mc wide"><span class="ck"><i></i>슬라이드바·수건걸이·휴지걸이</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>환풍기</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>육가배수구</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>매립수전</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>매립 휴지걸이</span><span class="b mline"></span><span class="mq"><span class="b"></span> 개</span></span></span></div></td></tr><tr><th>기타자재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>SMC천장재</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>청소건</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>코너선반</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>일자선반</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>2단 수전선반</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>가운걸이</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>젠다이 대리석</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>욕실장 콘센트</span><span class="b"></span><span class="u">개</span></span></span></div></td></tr><tr><th>부자재 · 세팅 · 매지인건비</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="tx">부자재 <span class="b"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">세팅 <span class="b"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">매지 <span class="b"></span></span></span></div></td></tr></tbody></table></section><section><h2><b>08–11</b>필름 · 도장 · 마감재</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>08 필름</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>현관내측 문/문틀</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>벽체 필름작업</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>방문·문틀</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>샷시</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>싱크대</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>붙박이장</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>신발장</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>기타 <span class="in">내용</span></span><span class="b"></span><span class="u"></span></span></span><span class="cell" style="grid-column: span 2"><span class="fl"><span class="tx">어디 </span><span class="b"></span><span class="u"></span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="tx">길이</span><span class="b"></span><span class="u">m</span></span></span></div></td></tr><tr><th>09 도장</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>탄성코트</span><span class="b"></span><span class="u">개소</span></span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>히드볼</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>기타마감</span><span class="note">샌딩·퍼티·애나멜·변성실리콘 작업 등</span></span></div></td></tr><tr><th>10 바닥 마감재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>강마루</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>장판</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>에디톤</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>강화마루</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>원목마루</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>데코타일</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>포쉐린타일</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>기타</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span><span class="cell" style="grid-column: span 3"><span class="tx">제품·색상 <span class="b w"></span></span><span class="note">예) 노바 블랙라벨</span></span><span class="cell" style="grid-column: span 1"><span class="tx">면적 <span class="b"></span> 평</span></span></div></td></tr><tr><th>11 벽 마감재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>실크</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>합지</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>천장지 따로</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>도장</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>필름</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>타일</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>대리석</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>기타</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span><span class="cell" style="grid-column: span 2"><span class="tx">제품·색상 <span class="b w"></span></span><span class="note">예) 디아망</span></span><span class="cell" style="grid-column: span 1"><span class="tx">면적 <span class="b"></span> 평</span></span></div></td></tr></tbody></table></section><section><h2><b>12</b>가구</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>싱크대</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>상부장</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>하부장 D700 이하 <span class="b"></span> m</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>아일랜드 D700 이하 <span class="b"></span> m</span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>아일랜드 D1200 이하 <span class="b"></span> m</span></span></div></td></tr><tr><th>하드웨어</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>댐핑 망장 (양념장) <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>BLUM 경첩</span><span class="b"></span><span class="u">개</span></span></span><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>주방 서랍장 언더레일 2단 속서랍 (문주) <span class="b"></span> 개</span></span><span class="cell" style="grid-column: span 3"><span class="ck"><i></i>주방 서랍장 언더레일 2단 속서랍 (BLUM) <span class="b"></span> 개</span></span></div></td></tr><tr><th>상판</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>대리석 LX하이막스</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>대리석 LX하이막스 오로라</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>세라믹 현대L&C 세라톤</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>포세린 LX 테라칸토</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>기타 세라믹</span></span><span class="cell" style="grid-column: span 1"><span class="tx">내용 <span class="b"></span></span></span><span class="cell" style="grid-column: span 1"><span class="tx">상판 길이 <span class="b"></span> m</span></span></div></td></tr><tr><th>주방 조명</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="ck"><i></i>상부장 간접등 매립</span><span class="note">제작 LED · EP마감 포함</span></span><span class="cell" style="grid-column: span 3"><span class="ck"><i></i>상부장 간접등 노출</span><span class="note">제작 LED · 터치스위치 & 안정기(SMPS)</span></span></div></td></tr><tr><th>기타가구<small>자당 · 냉장고장은 m</small></th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>신발장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>냉장고장</span><span class="b"></span><span class="u">m</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>붙박이장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>키큰장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>펜트리장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>화장대</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>서랍장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>벤치장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>시스템장</span><span class="b"></span><span class="u">자</span></span></span><span class="cell" style="grid-column: span 1"><span class="fl"><span class="ck"><i></i>공틀장</span><span class="b"></span><span class="u">자</span></span></span></div></td></tr><tr><th>기타 주방 자재</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>주방 싱크볼</span><span class="b mline"></span><span class="mq"></span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>주방 후드</span><span class="b mline"></span><span class="mq"></span></span></span><span class="cell" style="grid-column: span 2"><span class="mc"><span class="ck"><i></i>주방 수전</span><span class="b mline"></span><span class="mq"></span></span></span></div></td></tr></tbody></table></section><section><h2><b>13</b>기타마감</h2><table><colgroup><col class="c1"><col></colgroup><thead><tr><th>내용</th><th>체크 (하는 것만) · 수량은 바로 옆 칸에</th></tr></thead><tbody><tr><th>마감</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>마감 실리콘시공</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>도어락</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>월패드</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>입주청소</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>사다리차</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>빨래건조대</span></span></div></td></tr><tr><th>공과잡비</th><td class="c"><div class="grid"><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>엘베보양</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>입주민 동의</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>행위허가</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>사용승인</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>자재 운반 배송비</span></span><span class="cell" style="grid-column: span 1"><span class="ck"><i></i>자재 운반 양중비</span></span></div></td></tr></tbody></table></section></div></div></div>
+<form class="bar" id="bar" novalidate>
+  <label class="hp" aria-hidden="true">회사<input id="company" tabindex="-1" autocomplete="off"></label>
+  <label class="agree"><input type="checkbox" id="agree"><span>보내 주신 내용(인스타 아이디·연락처·공사 정보)은 <b>견적 상담에만</b> 쓰고, 요청하시면 바로 지워 드려요. 이에 동의합니다.</span></label>
+  <div class="row">
+    <button type="submit" class="send" id="send">유희하에 보내기</button>
+    <button type="button" class="zoom" id="zoom" aria-pressed="false">크게</button>
+  </div>
+  <p class="msg" id="msg" aria-live="polite">체크 <b id="n">0</b>개</p>
+</form>
+<div class="done" id="done" hidden>
+  <div class="card">
+    <div class="mark"></div>
+    <h2>잘 받았어요</h2>
+    <p>확인하고 인스타 DM으로 견적을 보내 드릴게요.<br>집 사진이나 평면도가 있으면 DM으로 같이 보내 주세요.</p>
+    <a href="https://ig.me/m/yuhiha_designers">인스타 DM으로 돌아가기</a>
+    <button type="button" id="again">체크리스트 다시 보기</button>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const ENDPOINT = "";
+(function () {
+  const sheet = document.getElementById('sheet');
+  const vp = document.querySelector('.viewport');
+  const msg = document.getElementById('msg');
+  const sendBtn = document.getElementById('send');
+  const zoomBtn = document.getElementById('zoom');
+  const insta = document.getElementById('insta');
+  const agree = document.getElementById('agree');
+  const KEY = 'yuhiha-checklist-site-v1';
+  let big = false;
+
+  // 빈칸(.b)을 같은 크기의 입력칸으로 바꾼다
+  let k = 0;
+  sheet.querySelectorAll('.b').forEach(el => {
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.className = el.className; inp.id = 'f' + (k++);
+    inp.setAttribute('style', el.getAttribute('style') || '');
+    inp.setAttribute('autocomplete', 'off');
+    const ctx = el.closest('.info > span');
+    inp.inputMode = ctx && /현장명|공사 일정|입주일|상담자|연락처/.test(ctx.textContent) ? 'text' : 'decimal';
+    if (ctx && /연락처/.test(ctx.textContent)) inp.inputMode = 'tel';
+    el.replaceWith(inp);
+  });
+  const cks = [...sheet.querySelectorAll('.ck')];
+  cks.forEach((ck, i) => { ck.id = 'c' + i; ck.tabIndex = 0; ck.setAttribute('role', 'checkbox'); ck.setAttribute('aria-checked', 'false'); });
+  const setCk = (ck, on) => { ck.classList.toggle('on', on); ck.setAttribute('aria-checked', String(on)); };
+
+  sheet.addEventListener('click', e => {
+    if (e.target.tagName === 'INPUT') return;
+    const ck = e.target.closest('.ck'); if (!ck) return;
+    setCk(ck, !ck.classList.contains('on')); update();
+  });
+  sheet.addEventListener('keydown', e => {
+    if (e.target.classList && e.target.classList.contains('ck') && (e.key === ' ' || e.key === 'Enter')) {
+      e.preventDefault(); setCk(e.target, !e.target.classList.contains('on')); update();
+    }
+  });
+  sheet.addEventListener('input', e => {
+    if (e.target.tagName !== 'INPUT') return;
+    const host = e.target.closest('.ck') || (e.target.closest('.fl') && e.target.closest('.fl').querySelector('.ck'));
+    if (host && e.target.value.trim()) setCk(host, true);
+    update();
+  });
+  insta.addEventListener('input', save);
+  agree.addEventListener('change', save);
+
+  const clean = s => s.replace(/\s+/g, ' ').trim();
+  const unitAfter = inp => { let n = inp.nextSibling; while (n && n.nodeType === 3 && !n.textContent.trim()) n = n.nextSibling; return n ? clean(n.textContent).split(' ')[0] : ''; };
+  // 체크 이름만 (빈칸 뒤 단위 글자 '개·m·평' 등은 숫자가 있을 때만 붙인다)
+  const ckLabel = ck => {
+    const c = ck.cloneNode(true);
+    c.querySelectorAll('small').forEach(x => x.remove());
+    c.querySelectorAll('input').forEach(x => { let n = x.nextSibling; while (n && n.nodeType === 3 && !n.textContent.trim()) n = n.nextSibling; if (n && n.nodeType === 3) n.textContent = n.textContent.replace(/^\s*\S+/, ''); x.remove(); });
+    return clean(c.textContent);
+  };
+
+  function info() {
+    const o = {};
+    sheet.querySelectorAll('.info > span').forEach(sp => {
+      const inp = sp.querySelector('input'); if (!inp || !inp.value.trim()) return;
+      const u = sp.querySelector('u');
+      o[clean(sp.childNodes[0].textContent)] = inp.value.trim() + (u ? u.textContent : '');
+    });
+    return o;
+  }
+
+  // 체크한 것만 글로 정리 (구글 시트·메일 본문용)
+  function summary() {
+    const lines = [];
+    Object.entries(info()).forEach(([k2, v]) => lines.push(k2 + ': ' + v));
+    let count = 0;
+    sheet.querySelectorAll('section').forEach(sec => {
+      const title = clean(sec.querySelector('h2').textContent.replace(/^[\d–-]+/, ''));
+      const rows = [];
+      sec.querySelectorAll('tbody tr').forEach(tr => {
+        const th = tr.querySelector('th'); const head = th ? clean(th.childNodes[0].textContent) : '';
+        const items = [];
+        tr.querySelectorAll('.cell').forEach(cell => {
+          const pre = cell.querySelector('.pre');
+          cell.querySelectorAll('.ck.on').forEach(ck => {
+            count++;
+            let t = (pre ? clean(pre.textContent) + ' ' : '') + ckLabel(ck);
+            const box = ck.closest('.fl, .mc') || ck;
+            const vals = [...box.querySelectorAll('input')].filter(x => x.value.trim()).map(x => x.value.trim() + unitAfter(x));
+            if (vals.length) t += ' ' + vals.join(' ');
+            items.push(t);
+          });
+          cell.querySelectorAll('input').forEach(x => {
+            if (!x.value.trim() || x.closest('.ck') || (x.closest('.fl, .mc') && x.closest('.fl, .mc').querySelector('.ck'))) return;
+            const lab = x.previousElementSibling && /tx|in|pre/.test(x.previousElementSibling.className) ? clean(x.previousElementSibling.textContent) + ' ' : '';
+            items.push(lab + x.value.trim() + unitAfter(x));
+          });
+        });
+        if (items.length) rows.push('- ' + head + ': ' + items.join(', '));
+      });
+      if (rows.length) { lines.push(''); lines.push('■ ' + title); rows.forEach(r => lines.push(r)); }
+    });
+    return { text: lines.join('\n'), count };
+  }
+
+  function update() { document.getElementById('n').textContent = summary().count; save(); }
+
+  function save() {
+    const d = { c: cks.filter(c => c.classList.contains('on')).map(c => c.id), f: {}, insta: insta.value };
+    sheet.querySelectorAll('input').forEach(x => { if (x.value) d.f[x.id] = x.value; });
+    try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+  }
+  function load() {
+    let d = null; try { d = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
+    if (!d) return;
+    (d.c || []).forEach(id => { const c = document.getElementById(id); if (c) setCk(c, true); });
+    Object.entries(d.f || {}).forEach(([id, v]) => { const x = document.getElementById(id); if (x) x.value = v; });
+    if (d.insta) insta.value = d.insta;
+  }
+
+  function fit() {
+    sheet.style.zoom = 1;
+    const w = sheet.getBoundingClientRect().width;
+    sheet.style.zoom = big ? 1.15 : Math.min(1, vp.clientWidth / w);
+  }
+  zoomBtn.addEventListener('click', () => { big = !big; zoomBtn.textContent = big ? '맞춤' : '크게'; zoomBtn.setAttribute('aria-pressed', String(big)); fit(); });
+  window.addEventListener('resize', fit);
+
+  // 체크된 양식을 A4 PDF로 만든다 (표·섹션 경계에서 쪽을 나눔)
+  let lastPages = [];
+  async function makePdf() {
+    lastPages = [];
+    const clone = sheet.cloneNode(true);
+    clone.removeAttribute('id'); clone.classList.add('print-clone'); clone.style.zoom = 1;
+    const src = sheet.querySelectorAll('input'); const dst = clone.querySelectorAll('input');
+    // html2canvas 는 입력칸 글자를 잘 못 그려서 같은 자리에 글자로 바꿔 넣는다
+    dst.forEach((x, i) => {
+      const span = document.createElement('span');
+      span.className = x.className; span.setAttribute('style', x.getAttribute('style') || '');
+      span.textContent = src[i].value;
+      span.style.display = getComputedStyle(src[i]).display === 'block' ? 'block' : 'inline-block';
+      span.style.color = '#2e595e'; span.style.fontWeight = '700'; span.style.textAlign = x.closest('.info') ? 'left' : 'center';
+      span.style.fontSize = '8.4pt'; span.style.lineHeight = '1.1'; span.style.height = 'auto'; span.style.minHeight = '9pt';
+      span.style.verticalAlign = 'baseline'; span.style.paddingBottom = '1px'; span.style.whiteSpace = 'nowrap';
+      x.replaceWith(span);
+    });
+    document.body.appendChild(clone);
+    try {
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const W = clone.offsetWidth;                 // 210mm
+      const PAGE = Math.round(W * 297 / 210);      // A4 높이(px)
+      const TOP = Math.round(W * 9 / 210), BOTTOM = Math.round(W * 10 / 210);
+      const base = clone.getBoundingClientRect().top;
+      const cuts = [...clone.querySelectorAll('section, tbody tr:not(:first-child)')].map(el => Math.round(el.getBoundingClientRect().top - base)).sort((a, b) => a - b);
+      const total = clone.scrollHeight;
+      const scale = Math.min(2, 2400 / W);
+      const canvas = await html2canvas(clone, { scale, backgroundColor: '#ffffff', useCORS: true, logging: false, windowWidth: W });
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ unit: 'px', format: [W, PAGE], orientation: 'portrait', compress: true, hotfixes: ['px_scaling'] });
+      let start = 0, first = true;
+      while (start < total - 4) {
+        const room = PAGE - (first ? 0 : TOP) - BOTTOM;
+        let end = start + room;
+        if (end < total) {
+          const fit2 = cuts.filter(c => c > start + 80 && c <= end);
+          if (fit2.length) end = fit2[fit2.length - 1];
+        } else end = total;
+        const h = end - start;
+        const page = document.createElement('canvas');
+        page.width = Math.round(W * scale); page.height = Math.round(PAGE * scale);
+        const g = page.getContext('2d');
+        g.fillStyle = '#fff'; g.fillRect(0, 0, page.width, page.height);
+        const y0 = first ? 0 : TOP;
+        g.drawImage(canvas, 0, Math.round(start * scale), canvas.width, Math.round(h * scale), 0, Math.round(y0 * scale), page.width, Math.round(h * scale));
+        if (!first) pdf.addPage([W, PAGE], 'portrait');
+        const jpg = page.toDataURL('image/jpeg', 0.86);
+        lastPages.push(jpg);
+        pdf.addImage(jpg, 'JPEG', 0, 0, W, PAGE);
+        start = end; first = false;
+      }
+      return pdf.output('datauristring').split(',')[1];
+    } finally { clone.remove(); }
+  }
+
+  function stamp() {
+    const d = new Date(); const p = n => String(n).padStart(2, '0');
+    return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + '-' + p(d.getHours()) + p(d.getMinutes());
+  }
+  const say = (t, err) => { msg.textContent = t; msg.classList.toggle('err', !!err); };
+
+  document.getElementById('bar').addEventListener('submit', async e => {
+    e.preventDefault();
+    const id = insta.value.trim().replace(/^@/, '');
+    if (!id) { say('맨 위에 인스타그램 아이디를 적어 주세요.', true); insta.scrollIntoView({ block: 'center' }); insta.focus(); return; }
+    const s = summary();
+    if (!s.count && !Object.keys(info()).length) { say('체크한 항목이 없어요. 하는 공사를 눌러 체크해 주세요.', true); return; }
+    if (!agree.checked) { say('보내기 전에 위 동의 칸을 눌러 주세요.', true); return; }
+    if (!ENDPOINT) { say('아직 접수 준비 중이에요. 잠시 후 다시 해 주세요.', true); return; }
+    sendBtn.disabled = true; sendBtn.textContent = '보내는 중…'; say('체크한 양식을 정리하고 있어요. 10초쯤 걸려요.');
+    let pdf = '';
+    try { pdf = await makePdf(); } catch (err) { pdf = ''; }
+    const inf = info();
+    const payload = {
+      v: 1, insta: id, company: document.getElementById('company').value,
+      info: inf, count: s.count, summary: s.text, pdf,
+      filename: stamp() + '_' + id.replace(/[^\w.가-힣-]/g, '') + (inf['평형'] ? '_' + inf['평형'] : '') + '.pdf',
+      ua: navigator.userAgent.slice(0, 160)
+    };
+    try {
+      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+      document.getElementById('done').hidden = false;
+      try { localStorage.removeItem(KEY); } catch (e2) {}
+      say('보냈어요.');
+    } catch (err) {
+      say('인터넷 연결이 불안정해요. 잠시 후 다시 눌러 주세요.', true);
+    } finally {
+      sendBtn.disabled = false; sendBtn.textContent = '유희하에 보내기';
+    }
+  });
+  document.getElementById('again').addEventListener('click', () => { document.getElementById('done').hidden = true; });
+
+  load(); fit(); update();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.__yuhiha = { makePdf, summary, pages: () => lastPages };
+})();
+
+</script>
+</body>
+</html>
